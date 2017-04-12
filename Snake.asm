@@ -86,10 +86,11 @@ fruitIGuess:
 	mul $a0, $a0, 4		# multiplies by 4 to make sure the address is valid
 	add $a0, $a0, $gp	# adds random number to gp for fruit
 	
-	#jal checkIfBorder
+	lw $t5, 0($a0) 			# Should set t5 to be equal to the info at a0 (should either be brown or red based upon placement)
+	beq $t5, $s4, fruitIGuess
 	
 	sw $s5, 0($a0)		# plots the plot to the plot
-	j Input
+	j Snek
 	
 Snek:
 
